@@ -11,11 +11,13 @@ const Signup = (props) => {
             method: 'POST',
             body: JSON.stringify({user:{username: username, password: password}}),
             headers: new Headers({
-                'Content-Type': 'application/json/'
+                'Content-Type': 'application/json'
             })
-            }) .then(
+            }) 
+            .then(
             (response) => response.json()
-            )  .then((data) => {
+            )  
+            .then((data) => {
             props.updateToken(data.sessionToken);
             })
     };

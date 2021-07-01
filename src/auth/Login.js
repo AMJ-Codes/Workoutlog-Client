@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap'; 
 
 const Login = (props) => { 
-    const [username, setUserName] = useState(''); 
+    const [username, setUsername] = useState(''); 
     const [password, setPassword] = useState(''); 
 
 const handleSubmit = (event) => {
@@ -13,9 +13,11 @@ const handleSubmit = (event) => {
         headers: new Headers({
             'Content-Type': 'application/json/'
         })
-        }) .then(
+        }) 
+        .then(
         (response) => response.json()
-        )  .then((data) => {
+        )  
+        .then((data) => {
         props.updateToken(data.sessionToken);
         })
 }
@@ -26,11 +28,11 @@ return(
         <Form onSubmit={handleSubmit}>
             <FormGroup>
                 <Label htmlFor="username">Username</Label>
-                <Input name="username" value={username}/> 
+                <Input onChange={(e) => setUsername(e.target.value)} name="username" value={username}/> 
             </FormGroup>
             <FormGroup>
                 <Label htmlFor="password">Password</Label>
-                <Input name="password" value={password}/> 
+                <Input onchange={(e) => setPassword(e.target.value)} name="password" value={password}/> 
             </FormGroup>
             <Button type="submit">Login</Button>
         </Form>

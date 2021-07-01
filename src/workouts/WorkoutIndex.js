@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Container, Row, Col} from 'reactstrap';
+import {Container, Row, Col } from 'reactstrap';
 
 const WorkoutIndex = (props) => {
     const [workouts, setWorkouts] = useState([]);
@@ -10,7 +10,8 @@ const WorkoutIndex = (props) => {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${props.token}`
             })
-            }).then((res) => res.json())
+            })
+            .then((res) => res.json())
                 .then((logData) => {
                     setWorkouts(logData)
         }) 
